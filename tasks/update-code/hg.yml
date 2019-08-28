@@ -16,3 +16,4 @@
   shell: "hg archive -r {{ ansistrano_hg_branch }} {{ ansistrano_release_path.stdout }}" # noqa 303 305
   args:
     chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_repo_dir }}/"
+  when: ansistrano_release_path.stdout

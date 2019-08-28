@@ -74,3 +74,4 @@
     chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_repo_dir }}/"
   environment:
     prefix: "{{ ansistrano_git_real_repo_tree }}"
+  when: ansistrano_git_real_repo_tree
