@@ -61,6 +61,7 @@
 
 - name: ANSISTRANO | GIT | Sync repo subtree["{{ ansistrano_git_real_repo_tree }}"] to release path
   shell: >-
+          set -o pipefail &&
            {
              git ls-files -z --with-tree="{{ ansistrano_git_branch }}" | tr '\0' '\n';
              git submodule foreach --recursive | sed -n -e "s/^Entering '\(.*\)'$/\1/p" | while read -r line; do (cd "$line"; git ls-files -z | tr "\0" "\n" | sed "s#^#$line/#"; cd $OLDPWD); done
